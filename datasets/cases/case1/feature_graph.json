@@ -1,0 +1,51 @@
+{
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+
+  "stock": {
+    "type": "block",
+    "params": {
+      "w": 50,
+      "d": 30,
+      "h": 20
+    }
+  },
+
+  "nodes": [
+    {
+      "id": "F1",
+      "feature_type": "mill:face",
+      "selector": ">Z",
+      "params": {
+        "depth": 2.0
+      }
+    },
+    {
+      "id": "F2",
+      "feature_type": "mill:profile",
+      "selector": ">Z",
+      "params": {
+        "rect_w": 45.0,
+        "rect_h": 25.0,
+        "depth": 5.0
+      }
+    },
+    {
+      "id": "F3",
+      "feature_type": "drill:hole",
+      "selector": ">Z",
+      "params": {
+        "dia": 5.0,
+        "depth": 10.0,
+        "x": 0.0,
+        "y": 0.0
+      }
+    }
+  ],
+  "links": [
+    { "source": "F1", "target": "F2", "relation": "precedence" },
+    { "source": "F2", "target": "F3", "relation": "precedence" }
+  ]
+}

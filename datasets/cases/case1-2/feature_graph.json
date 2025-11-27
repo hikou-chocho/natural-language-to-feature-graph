@@ -1,0 +1,33 @@
+{
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+
+  "stock": {
+    "type": "block",
+    "params": {
+      "w": 100,
+      "d": 50,
+      "h": 25
+    }
+  },
+
+  "nodes": [
+    {
+      "id": "F1",
+      "feature_type": "mill:hole_pattern",
+      "selector": ">Z",
+      "params": {
+        "pattern": "line",
+        "dia": 6.0,
+        "depth": 20.0,
+        "count": 5,
+        "start": { "x": -30.0, "y": 0.0 },
+        "end":   { "x":  30.0, "y": 0.0 }
+      }
+    }
+  ],
+
+  "links": []
+}

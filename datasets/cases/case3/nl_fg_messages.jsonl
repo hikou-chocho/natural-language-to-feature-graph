@@ -1,0 +1,43 @@
+﻿{"messages": [
+  {"role": "system", "content": "You are a CAD feature graph generator. Output ONLY JSON."},
+  {"role": "user",   "content": "φ50×80 mm の円柱素材（原点は素材中心、Z 軸が回転軸）を外形プロファイル旋削する。Z=0～20 mm 区間は外径 φ50、Z=20～40 mm 区間は外径 φ40、Z=40～80 mm 区間は外径 φ30 となる段付き軸形状になるように、プロファイル定義に従って外径を削る。
+
+
+
+"},
+  {"role": "assistant", "content": "{
+  \"units\": {
+    \"length\": \"mm\",
+    \"angle\": \"deg\"
+  },
+
+  \"stock\": {
+    \"type\": \"cylinder\",
+    \"params\": {
+      \"dia\": 50.0,
+      \"h\": 80.0
+    }
+  },
+
+  \"nodes\": [
+    {
+      \"id\": \"F1\",
+      \"feature_type\": \"lathe:turn_od_profile\",
+      \"selector\": null,
+      \"params\": {
+        \"profile\": [
+          { \"z\": 0.0,  \"d\": 50.0 },
+          { \"z\": 20.0, \"d\": 50.0 },
+          { \"z\": 20.0, \"d\": 40.0 },
+          { \"z\": 40.0, \"d\": 40.0 },
+          { \"z\": 40.0, \"d\": 30.0 },
+          { \"z\": 80.0, \"d\": 30.0 }
+        ]
+      }
+    }
+  ],
+
+  \"links\": []
+}
+"}
+]}

@@ -1,0 +1,48 @@
+{
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+
+  "stock": {
+    "type": "cylinder",
+    "params": {
+      "dia": 50.0,
+      "h": 50.0
+    }
+  },
+
+  "nodes": [
+    {
+      "id": "F1",
+      "feature_type": "lathe:face_cut",
+      "selector": ">Z",
+      "params": {
+        "depth": 2.0
+      }
+    },
+    {
+      "id": "F2",
+      "feature_type": "lathe:turn_od",
+      "selector": ">Z",
+      "params": {
+        "target_dia": 45.0,
+        "length": 30.0
+      }
+    },
+    {
+      "id": "F3",
+      "feature_type": "lathe:bore_id",
+      "selector": ">Z",
+      "params": {
+        "target_dia": 20.0,
+        "length": 30.0
+      }
+    }
+  ],
+
+  "links": [
+    { "source": "F1", "target": "F2", "relation": "precedence" },
+    { "source": "F2", "target": "F3", "relation": "precedence" }
+  ]
+}

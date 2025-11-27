@@ -1,0 +1,42 @@
+﻿{"messages": [
+  {"role": "system", "content": "You are a CAD feature graph generator. Output ONLY JSON."},
+  {"role": "user",   "content": "100×50×25 mm の直方体ブロック（原点はブロック中心、+Z が上向き）の上面（>Z）から、X 方向に一直線に並ぶ直径 6 mm の穴を 5 個フライス加工する。開始点 (-30, 0) ～ 終点 (30, 0) を結ぶ線分上に等間隔で配置し、上面から下向きに深さ 20 mm 穴あけする。
+
+
+
+"},
+  {"role": "assistant", "content": "{
+  \"units\": {
+    \"length\": \"mm\",
+    \"angle\": \"deg\"
+  },
+
+  \"stock\": {
+    \"type\": \"block\",
+    \"params\": {
+      \"w\": 100,
+      \"d\": 50,
+      \"h\": 25
+    }
+  },
+
+  \"nodes\": [
+    {
+      \"id\": \"F1\",
+      \"feature_type\": \"mill:hole_pattern\",
+      \"selector\": \">Z\",
+      \"params\": {
+        \"pattern\": \"line\",
+        \"dia\": 6.0,
+        \"depth\": 20.0,
+        \"count\": 5,
+        \"start\": { \"x\": -30.0, \"y\": 0.0 },
+        \"end\":   { \"x\":  30.0, \"y\": 0.0 }
+      }
+    }
+  ],
+
+  \"links\": []
+}
+"}
+]}

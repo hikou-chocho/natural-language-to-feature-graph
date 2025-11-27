@@ -1,0 +1,51 @@
+﻿{"messages": [
+  {"role": "system", "content": "You are a CAD feature graph generator. Output ONLY JSON."},
+  {"role": "user",   "content": "50×30×20 のブロック素材を用意する。  
+まず上面を 2mm 荒取りして基準面を作る。  
+次に外周を 45×25 の長方形になるように、上面から 5mm 落とす。  
+最後に、中心に直径 5mm の穴を、上面から 10mm の深さであける。
+
+"},
+  {"role": "assistant", "content": "{
+  \"units\": {
+    \"length\": \"mm\",
+    \"angle\": \"deg\"
+  },
+  \"nodes\": [
+    {
+      \"id\": \"F1\",
+      \"feature_type\": \"mill:face\",
+      \"selector\": \">Z\",
+      \"params\": {
+        \"depth\": 2.0
+      }
+    },
+    {
+      \"id\": \"F2\",
+      \"feature_type\": \"mill:profile\",
+      \"selector\": \">Z\",
+      \"params\": {
+        \"rect_w\": 45.0,
+        \"rect_h\": 25.0,
+        \"depth\": 5.0
+      }
+    },
+    {
+      \"id\": \"F3\",
+      \"feature_type\": \"drill:hole\",
+      \"selector\": \">Z\",
+      \"params\": {
+        \"dia\": 5.0,
+        \"depth\": 10.0,
+        \"x\": 0.0,
+        \"y\": 0.0
+      }
+    }
+  ],
+  \"links\": [
+    { \"source\": \"F1\", \"target\": \"F2\", \"relation\": \"precedence\" },
+    { \"source\": \"F2\", \"target\": \"F3\", \"relation\": \"precedence\" }
+  ]
+}
+"}
+]}

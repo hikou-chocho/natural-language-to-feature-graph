@@ -1,0 +1,57 @@
+﻿{"messages": [
+  {"role": "system", "content": "You are a CAD feature graph generator. Output ONLY JSON."},
+  {"role": "user",   "content": "φ50×50 mm の円柱素材（原点は素材中心、Z 軸が回転軸）を旋削する。>Z 側端面を 2 mm 面削りしたのち、同じ側から先端方向に長さ 30 mm を外径 φ45 まで外径削りし、その後、同じ端面側から長さ 30 mm、内径 φ20 の中ぐり穴を加工する。
+
+
+
+"},
+  {"role": "assistant", "content": "{
+  \"units\": {
+    \"length\": \"mm\",
+    \"angle\": \"deg\"
+  },
+
+  \"stock\": {
+    \"type\": \"cylinder\",
+    \"params\": {
+      \"dia\": 50.0,
+      \"h\": 50.0
+    }
+  },
+
+  \"nodes\": [
+    {
+      \"id\": \"F1\",
+      \"feature_type\": \"lathe:face_cut\",
+      \"selector\": \">Z\",
+      \"params\": {
+        \"depth\": 2.0
+      }
+    },
+    {
+      \"id\": \"F2\",
+      \"feature_type\": \"lathe:turn_od\",
+      \"selector\": \">Z\",
+      \"params\": {
+        \"target_dia\": 45.0,
+        \"length\": 30.0
+      }
+    },
+    {
+      \"id\": \"F3\",
+      \"feature_type\": \"lathe:bore_id\",
+      \"selector\": \">Z\",
+      \"params\": {
+        \"target_dia\": 20.0,
+        \"length\": 30.0
+      }
+    }
+  ],
+
+  \"links\": [
+    { \"source\": \"F1\", \"target\": \"F2\", \"relation\": \"precedence\" },
+    { \"source\": \"F2\", \"target\": \"F3\", \"relation\": \"precedence\" }
+  ]
+}
+"}
+]}

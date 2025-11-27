@@ -1,0 +1,38 @@
+﻿{"messages": [
+  {"role": "system", "content": "You are a CAD feature graph generator. Output ONLY JSON."},
+  {"role": "user",   "content": "80×60×30 mm の直方体ブロック（原点はブロック中心、+Z が上向き）から、上面の中心を原点として 40×30 mm の矩形ポケットを 1 つフライス加工する。ポケットは四隅 R4 mm、上面から下向きに深さ 10 mm 掘り込む。
+"},
+  {"role": "assistant", "content": "{
+  \"units\": {
+    \"length\": \"mm\",
+    \"angle\": \"deg\"
+  },
+
+  \"stock\": {
+    \"type\": \"block\",
+    \"params\": {
+      \"w\": 80,
+      \"d\": 60,
+      \"h\": 30
+    }
+  },
+
+  \"nodes\": [
+    {
+      \"id\": \"F1\",
+      \"feature_type\": \"mill:pocket_profile\",
+      \"selector\": \">Z\",
+      \"params\": {
+        \"profile_type\": \"rect\",
+        \"center\": { \"x\": 0.0, \"y\": 0.0 },
+        \"size\":   { \"x\": 40.0, \"y\": 30.0 },
+        \"depth\": 10.0,
+        \"corner_radius\": 4.0
+      }
+    }
+  ],
+
+  \"links\": []
+}
+"}
+]}

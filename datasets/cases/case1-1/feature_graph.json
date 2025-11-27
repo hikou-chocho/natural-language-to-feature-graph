@@ -1,0 +1,32 @@
+{
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+
+  "stock": {
+    "type": "block",
+    "params": {
+      "w": 80,
+      "d": 60,
+      "h": 30
+    }
+  },
+
+  "nodes": [
+    {
+      "id": "F1",
+      "feature_type": "mill:pocket_profile",
+      "selector": ">Z",
+      "params": {
+        "profile_type": "rect",
+        "center": { "x": 0.0, "y": 0.0 },
+        "size":   { "x": 40.0, "y": 30.0 },
+        "depth": 10.0,
+        "corner_radius": 4.0
+      }
+    }
+  ],
+
+  "links": []
+}

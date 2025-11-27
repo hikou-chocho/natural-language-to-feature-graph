@@ -19,7 +19,7 @@ if (-not (Test-Path $FeatureGraphJsonFile)) {
 }
 
 # --- Load natural language text ---
-$nl = Get-Content $NaturalLanguageFile -Raw
+$nl = Get-Content $NaturalLanguageFile -Raw -Encoding UTF8
 
 # --- Load FeatureGraph JSON ---
 $fg_raw = Get-Content $FeatureGraphJsonFile -Raw
